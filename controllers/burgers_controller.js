@@ -12,3 +12,10 @@ router.get('/', (req, res) => {
       res.render('index', hbsObject);
     });
   });
+
+  router.post('/api/burgers', (req, res) => {
+    cat.create(['name', 'sleepy'], [req.body.name, req.body.sleepy], (result) => {
+      // Send back the ID of the new quote
+      res.json({ id: result.insertId });
+    });
+  });
