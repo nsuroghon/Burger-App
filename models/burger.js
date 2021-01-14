@@ -13,3 +13,5 @@ const burger = {
       orm.updateOne('burgers', objColVals, condition, (res) => cb(res));
     },
   };
+
+module.exports = burger;

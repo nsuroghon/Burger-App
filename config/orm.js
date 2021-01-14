@@ -52,7 +52,7 @@ function createQmarks(num) {
 const orm = {
     selectAll(table, cb) {
         const dbQuery = "SELECT * FROM " + table + ";";
-        connection.query(dbQuery, function(err, res) {
+        connection.query(dbQuery, (err, res) => {
         if (err) {
           throw err;
         }
@@ -72,7 +72,7 @@ const orm = {
         ") ";
   
       console.log(dbQuery);
-      connection.query(dbQuery, vals, function(err, res) {
+      connection.query(dbQuery, vals, (err, res) => {
         if (err) {
           throw err;
         }
@@ -91,7 +91,7 @@ const orm = {
   
       console.log(dbQuery);
   
-      connection.query(dbQuery, function(err, res) {
+      connection.query(dbQuery, (err, res) => {
         if (err) {
           throw err;
         }
