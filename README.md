@@ -4,10 +4,8 @@
 
 ## Table of Contents
 * [Description](#description)
-* [Installation Guide](#installation)
 * [Usage Information](#usage)
-* [Contributions](#contribution)    
-* [Test Instructions](#tests)
+* [Preview](#preview)    
 * [License](#license)
 
 ## Description
