@@ -19,6 +19,8 @@ Eat-Da-Burger can be envoked locally using the command npm start
 
 ## Preview
 
+![Preview](https://github.com/nsuroghon/Burger-App/blob/main/public/assets/img/Screen%20Shot%202021-01-14%20at%207.53.57%20PM.png "Screenshot")
+
 ## License
 MIT
 
