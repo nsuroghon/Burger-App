@@ -1,18 +1,20 @@
 <div class="container">
 
     <div class="jumbotron">
-        <h1>Order Your Burger </h1>
-        <p>Burger Orders for Pickup.</p>
-        <br>
-        <h2>Select a Burger or Sandwich</h2>
+        <h1>Eat-Da-Burger</h1>
+        <p>Burger Orders.</p>
         <panel>
+
+{{!-- FORM; ADD NEW BURGER AVAILABLE IN DROP DOWN --}}
             <form class="create-form">
                 <div class="form-group">
-                    <label for="newburger">Order Fresh Burger</label>
+                    <label for="newburger">Add New Burger</label>
                     {{!-- <input type="text" id="newburger" name="burger"> --}}
                     <select data-placeholder="" id="newburger" name="burger">
-                        <option value="Nothing Selected" selected>Please Select a Sandwich</option>
+                        <option value="Nothing Selected" selected>Select Option From Dropdown</option>
+                        <option value="Hamburger">Homemade</option>
                         <option value="CheeseBurger">CheeseBurger</option>
+                        <option value="VeggieBurger">Veggie Burger</option>
                     </select>
 
                     <button type="submit" class="btn btn-success" id="addburger">
@@ -25,8 +27,7 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="panel panel-default">
-                <div class="panel-heading" id="leftside"><strong>Order Your Burger</strong>
-                    <p>Send order to cashier when ready for pick up</p>
+                <div class="panel-heading" id="leftside"><strong>Ready Burgers</strong>
                 </div>
                 <div class="panel-body">
 
@@ -47,23 +48,17 @@
         </div>
         <div class="col-sm-6">
             <div class="panel panel-default">
-                <div class="panel-heading" id="rightside"><strong>Burger is Ready for Pick Up</strong>
-                    <p>Remove order from pick up when delivered</p>
+                <div class="panel-heading" id="rightside"><strong>Burgers devoured</strong>
                 </div>
                 <div class="panel-body">
                     <ul>
                         {{#each burgers}}
                         {{#if devoured}}
                         <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
-                        <button type="button" class="trashburger btn btn-danger" id="trashbutton" data-id="{{this.id}}"
-                            data-newDevoured="{{devour}}"><span class="fa fa-trash"></span></button>
                         <hr>
                         {{/if}}
                         {{/each}}
                     </ul>
-
-
-
                 </div>
             </div>
         </div>
