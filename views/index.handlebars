@@ -4,13 +4,9 @@
         <h1>Eat-Da-Burger</h1>
         <p>Burger Orders.</p>
         <panel>
-
-{{!-- FORM; ADD NEW BURGER AVAILABLE IN DROP DOWN --}}
-            <form class="create-form">
                 <div class="form-group">
-                    <label for="newburger">Add New Burger</label>
                     {{!-- <input type="text" id="newburger" name="burger"> --}}
-                    <form id="create-form">
+                    <form class="add">
 
                         <div class="form-group text-center">
                             <input type="text" id="ca" name="name">
@@ -18,13 +14,10 @@
                         <div class="text-center">
                              <button type="submit" class="text-center">Add Burger!</button>
                         </div>  
+
                     </form>
 
-                    <button type="submit" class="btn btn-success" id="addburger">
-                        <span class="fa fa-thumbs-up"></span>
-                    </button>
                 </div>
-            </form>
         </panel>
     </div>
     <div class="row">
@@ -35,15 +28,19 @@
                 <div class="panel-body">
 
                     <ul>
+                        <h3 class="text-center"></h2>
                         {{#each burgers}}
                         {{#unless devoured}}
+                            <li class="text-center">
+                   
+                        <span>{{this.id}}. </span>{{this.burger_name}}
+                        <button data-id="{{this.id}}" class="devour">Devour It!</button>
+                 
 
-                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
-                        <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id="{{this.id}}"
-                            data-newDevoured="{{devour}}"><span class="fa fa-usd"></span></button>
-                        <hr>
+                            </li>
                         {{/unless}}
                         {{/each}}
+
                     </ul>
 
                 </div>
@@ -55,13 +52,16 @@
                 </div>
                 <div class="panel-body">
                     <ul>
-                        {{#each burgers}}
-                        {{#if devoured}}
-                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
-                        <hr>
-                        {{/if}}
-                        {{/each}}
-                    </ul>
+                    {{#each burgers}}
+                    {{#if devoured}}
+                        <li class="text-center">
+                    
+                        <span>{{this.id}}. </span>{{this.burger_name}} 
+                        
+                        </li>
+                    {{/if}}
+                    {{/each}}
+            </ul>
                 </div>
             </div>
         </div>
