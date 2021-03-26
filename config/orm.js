@@ -36,7 +36,7 @@ function createQmarks(num) {
   }
   
   function translateSql(ob) {
-    var arr = [];
+    const arr = [];
     for (var key in ob) {
       var value = ob[key];
       if (Object.hasOwnProperty.call(ob, key)) {

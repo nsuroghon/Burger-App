@@ -10,12 +10,15 @@
                 <div class="form-group">
                     <label for="newburger">Add New Burger</label>
                     {{!-- <input type="text" id="newburger" name="burger"> --}}
-                    <select data-placeholder="" id="newburger" name="burger">
-                        <option value="Nothing Selected" selected>Select Option From Dropdown</option>
-                        <option value="Hamburger">Homemade</option>
-                        <option value="CheeseBurger">CheeseBurger</option>
-                        <option value="VeggieBurger">Veggie Burger</option>
-                    </select>
+                    <form id="create-form">
+
+                        <div class="form-group text-center">
+                            <input type="text" id="ca" name="name">
+                        </div>
+                        <div class="text-center">
+                             <button type="submit" class="text-center">Add Burger!</button>
+                        </div>  
+                    </form>
 
                     <button type="submit" class="btn btn-success" id="addburger">
                         <span class="fa fa-thumbs-up"></span>
