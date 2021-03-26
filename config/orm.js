@@ -37,13 +37,13 @@ function createQmarks(num) {
   
   function translateSql(ob) {
     const arr = [];
-    for (var key in ob) {
+    for (const key in ob) {
       var value = ob[key];
       if (Object.hasOwnProperty.call(ob, key)) {
         if (typeof value === "string" && value.indexOf(" ") >= 0) {
-          value = "'" + value + "'";
+          value = `'${value}'`;
         }
-        arr.push(key + "=" + value);
+        arr.push(`${key}=${value}`);
       }
     }
     return arr.toString();
@@ -51,7 +51,7 @@ function createQmarks(num) {
   
 const orm = {
     selectAll(table, cb) {
-        const dbQuery = "SELECT * FROM " + table + ";";
+        const dbQuery = `"SELECT * FROM " + ${tableInput}`;
         connection.query(dbQuery, (err, res) => {
         if (err) {
           throw err;
@@ -60,44 +60,40 @@ const orm = {
       });
     },
 
-    insertOne(table, cols, vals, cb){
-      var dbQuery =
-        "INSERT INTO " +
-        table +
-        " (" +
-        cols.toString() +
-        ") " +
-        "VALUES (" +
-        createQmarks(vals.length) +
-        ") ";
+    insertOne(table, cols, vals, cb) {
+      let queryString = `INSERT INTO ${table}`;
   
-      console.log(dbQuery);
-      connection.query(dbQuery, vals, (err, res) => {
+      queryString += " (";
+      queryString += cols.toString();
+      queryString += ") ";
+      queryString += "VALUES (";
+      queryString += printQuestionMarks(vals.length);
+      queryString += ") ";
+  
+      connection.query(queryString, vals, (err, result) => {
         if (err) {
           throw err;
         }
-        cb(res);
+  
+        cb(result);
       });
     },
-
     updateOne(table, objColVals, condition, cb) {
-      var dbQuery =
-        "UPDATE " +
-        table +
-        " SET " +
-        translateSql(objColVals) +
-        " WHERE " +
-        condition;
+      let queryString = `UPDATE ${table}`;
   
-      console.log(dbQuery);
+      queryString += " SET ";
+      queryString += objToSql(objColVals);
+      queryString += " WHERE ";
+      queryString += condition;
   
-      connection.query(dbQuery, (err, res) => {
+      connection.query(queryString, (err, result) => {
         if (err) {
           throw err;
         }
-        cb(res);
+  
+        cb(result);
       });
     },
-};
+  };
 
 module.exports = orm;
