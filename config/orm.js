@@ -51,7 +51,7 @@ function createQmarks(num) {
   
 const orm = {
     selectAll(table, cb) {
-        const dbQuery = `"SELECT * FROM ${table}`;
+        const dbQuery = `SELECT * FROM ${table}`;
         connection.query(dbQuery, (err, res) => {
         if (err) {
           throw err;
